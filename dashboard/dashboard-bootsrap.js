@@ -1,9 +1,10 @@
 // Inject dashboard-specific CSS files
 const styles = [
-    '../style-global.css',
-    '../utilities.css',
-    './dashboard.css'
+    '/lokveda/style-global.css',
+    '/lokveda/utilities.css',
+    '/lokveda/dashboard/dashboard.css'
 ];
+
 
 styles.forEach(href => {
     if (!document.querySelector(`link[href="${href}"]`)) {
@@ -16,8 +17,8 @@ styles.forEach(href => {
 
 // Inject required JS modules
 const scripts = [
-    '../script-global.js',
-    '../nav-bar.js'
+    '/lokveda/script-global.js',
+    '/lokveda/nav-bar.js'
 ];
 
 scripts.forEach(src => {
