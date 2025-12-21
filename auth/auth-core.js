@@ -4,8 +4,8 @@
     > Export class instance
     # authGen: Gen Admin/Staff/User Login UI capable of OTP verification
 */
-import { body, head } from "../dom.js";
-import { confirmSession, getPhone, INIT, otp } from "../firebase.js";
+import { body, head } from '/lokveda/dom.js';
+import { confirmSession, getPhone, INIT, otp } from '/lokveda/firebase.js';
 
 // STORES AUTH ROLE
 let _role;
@@ -27,9 +27,9 @@ class AuthGen {
     // Links CSS: style-global & auth
     loadStyles() {
         const styles = [
-            '../style-global.css',
-            './auth.css',
-            '../utilities.css'
+            '/lokveda/style-global.css',
+            '/lokveda/auth/auth.css',
+            '/lokveda/utilities.css'
         ];
 
         for (const href of styles) {
@@ -48,7 +48,7 @@ class AuthGen {
 
         const script = document.createElement('script');
         script.type = 'module';
-        script.src = '/script-global.js';
+        script.src = '/lokveda/script-global.js';
         script.dataset.global = 'true';
         body.append(script);
     }
@@ -179,7 +179,7 @@ class AuthGen {
 
             // Confirm session & redirect user to dashboard
             confirmSession();
-            window.location.href = `/dashboard/dashboard-${_role}.html`;
+            window.location.href = `/lokveda/dashboard/dashboard-${_role}.html`;
         });
 
         form.addEventListener('submit', e => e.preventDefault());
