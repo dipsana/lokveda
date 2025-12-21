@@ -4,7 +4,7 @@ const formParam = new URLSearchParams(window.location.search).get("form"),
     formContainer = document.getElementById("form-container");
 
 if (formParam) {
-    const formPath = `../forms/${formParam}.html`;
+    const formPath = `/lokveda/forms/${formParam}.html`;
     {
         const formTitle = document.getElementById('form-title');
         formTitle?.remove();
