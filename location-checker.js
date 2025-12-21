@@ -4,7 +4,7 @@
    #checkUserProximity: verifies user distance and boundary
 */
 
-import { fetchCoords, getRole, getOfficeLatitude, getOfficeLongitude, logout } from './firebase.js';
+import { fetchCoords, getRole, getOfficeLatitude, getOfficeLongitude, logout } from '/lokveda/firebase.js';
 
 // Haversine distance calculation (in km)
 function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {

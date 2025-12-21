@@ -4,7 +4,7 @@
     #initGreetingBot: Greets user based on their location
 */
 
-import { getLatitude, getLongitude, getUserName } from './firebase.js';
+import { getLatitude, getLongitude, getUserName } from '/lokveda/firebase.js';
 
 export async function initGreetingBot(greet = document.getElementById('greet')) {
     if (!greet) return console.error('Greeter element not provided');

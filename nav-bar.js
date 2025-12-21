@@ -1,7 +1,7 @@
-import { body } from "./dom.js";
-import { getOfficeClose, getOfficeName, getOfficeOpen, getOfflineLink, getRole, INIT_DATA, logout } from "./firebase.js";
-import { initGreetingBot } from "./greeting-bot.js";
-import { show, hide } from "./script-global.js";
+import { body } from '/lokveda/dom.js';
+import { getOfficeClose, getOfficeName, getOfficeOpen, getOfflineLink, getRole, INIT_DATA, logout } from '/lokveda/firebase.js';
+import { initGreetingBot } from '/lokveda/greeting-bot.js';
+import { show, hide } from '/lokveda/script-global.js';
 
 await INIT_DATA();
 
@@ -48,7 +48,7 @@ if (navTools) {
     homeBtn.title = 'Go to your dashboard';
     homeBtn.setAttribute('aria-label', 'Home');
     homeBtn.textContent = '🏠';
-    homeBtn.addEventListener('click', () => window.location.href = `/dashboard/dashboard-${getRole()}.html`);
+    homeBtn.addEventListener('click', () => window.location.href = `/lokveda/dashboard/dashboard-${getRole()}.html`);
 
     // Search Btn
     searchBtn.id = 'search-btn';

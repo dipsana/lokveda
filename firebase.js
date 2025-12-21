@@ -136,10 +136,8 @@ export async function INIT_DATA() {
 
     // ✅ commit lookup ONLY AFTER SUCCESS
     curUser = user;
-    console.log(curUser);
     curUserRef = userRef;
     area = areaSnap.data();
-    console.log(area);
     coords = { lat: area.lat, lon: area.lon };
 
     return "Login successful";
@@ -255,7 +253,7 @@ export async function logout() {
     sessionStorage.removeItem('initialized');
 
     // Redirect client to home
-    window.location.href = '/index.html';
+    window.location.href = '/lokveda/index.html';
 }
 
 /* ------------ Auto logout on idle ------------ */
