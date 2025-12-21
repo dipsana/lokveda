@@ -5,12 +5,13 @@
 LokVeda is an **academic demonstration project** and is not intended for
 production deployment.
 
-Only the latest tagged release is considered for **best-effort security review**.
+Only the latest tagged releases are considered for **best-effort security review**.
 
-| Version | Supported |
-| ------ | --------- |
-| v1.0.0 | 🟡 Limited (Academic / Demo Only) |
-| < v1.0.0 | ❌ Not Supported |
+| Version  | Supported                         |
+| -------- | --------------------------------- |
+| v1.0.1   | 🟡 Limited (Academic / Demo Only) |
+| v1.0.0   | 🟡 Limited (Academic / Demo Only) |
+| < v1.0.0 | ❌ Not Supported                  |
 
 > 🟡 Limited support means issues may be reviewed and documented, but fixes are
 > not guaranteed.
@@ -20,10 +21,11 @@ Only the latest tagged release is considered for **best-effort security review**
 ## ⚠️ Important Notice
 
 LokVeda:
-- Is a **frontend-focused academic project**
-- Uses **Firebase as a virtual backend**
-- Does **not** handle real government data
-- Is **not hardened** for production security threats
+
+* Is a **frontend-focused academic project**
+* Uses **Firebase as a virtual backend**
+* Does **not** handle real government data
+* Is **not hardened** for production security threats
 
 **Do not deploy this project in real-world or public production environments.**
 
@@ -33,20 +35,22 @@ LokVeda:
 
 If you discover a potential security issue, you may report it by:
 
-- Opening a **GitHub Issue** with the label `security`
-- Clearly describing:
-  - The affected file or module
-  - Steps to reproduce (if applicable)
-  - Expected vs actual behavior
+* Opening a **GitHub Issue** with the label `security`
+* Clearly describing:
+
+  * The affected file or module
+  * Steps to reproduce (if applicable)
+  * Expected vs actual behavior
 
 ### What to Expect
 
-- Reports are reviewed on a **best-effort basis**
-- You may receive a response within **7–14 days**
-- Issues may be:
-  - Documented for academic learning
-  - Fixed in a future version
-  - Marked as *out of scope* if not relevant to this project’s goals
+* Reports are reviewed on a **best-effort basis**
+* You may receive a response within **7–14 days**
+* Issues may be:
+
+  * Documented for academic learning
+  * Fixed in a future version
+  * Marked as *out of scope* if not relevant to this project’s goals
 
 ---
 
@@ -54,21 +58,22 @@ If you discover a potential security issue, you may report it by:
 
 The following are **out of scope** for security reports:
 
-- Penetration testing
-- Automated vulnerability scans
-- Denial-of-service attacks
-- Firebase infrastructure vulnerabilities
-- Social engineering attacks
-- Issues requiring a real backend
+* Penetration testing
+* Automated vulnerability scans
+* Denial-of-service attacks
+* Firebase infrastructure vulnerabilities
+* Social engineering attacks
+* Issues requiring a real backend
 
 ---
 
 ## 🧠 Educational Intent
 
 Security reports help improve:
-- Code quality
-- System design understanding
-- Secure architecture awareness
+
+* Code quality
+* System design understanding
+* Secure architecture awareness
 
 However, **no security guarantees or service-level commitments are provided**.
 
