@@ -1,0 +1,32 @@
+<h1>Welfare Schemes Application Form</h1>
+<form id="welfare-schemes-form">
+    <label>
+        Applicant Name:
+        <input type="text" name="applicantName" required>
+    </label>
+
+    <label>
+        Aadhar Number:
+        <input type="text" name="aadharNumber" maxlength="12" required>
+    </label>
+
+    <label>
+        Scheme Name:
+        <select name="schemeName" required>
+            <option value="">--Select--</option>
+            <option value="oldage">Old Age Pension</option>
+            <option value="widow">Widow Pension</option>
+            <option value="disability">Disability Benefit</option>
+            <option value="others">Other Schemes</option>
+        </select>
+    </label>
+
+    <label>
+        Income Certificate Number:
+        <input type="text" name="incomeCert" required>
+    </label>
+
+    <label>
+        Upload Supporting Documents:
+        <input type="file" name="documents" multiple required>
+    </label>

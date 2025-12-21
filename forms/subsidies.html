@@ -1,0 +1,31 @@
+<h1>Subsidy Application and Tracking Form</h1>
+<form id="subsidies-form">
+    <label>
+        Applicant Name:
+        <input type="text" name="applicantName" required>
+    </label>
+
+    <label>
+        Aadhar Number:
+        <input type="text" name="aadharNumber" maxlength="12" required>
+    </label>
+
+    <label>
+        Subsidy Type:
+        <select name="subsidyType" required>
+            <option value="">--Select--</option>
+            <option value="agriculture">Agricultural Subsidy</option>
+            <option value="education">Education Subsidy</option>
+            <option value="housing">Housing Subsidy</option>
+        </select>
+    </label>
+
+    <label>
+        Application Number (if tracking):
+        <input type="text" name="trackingId">
+    </label>
+
+    <label>
+        Upload Relevant Documents:
+        <input type="file" name="documents" multiple>
+    </label>
