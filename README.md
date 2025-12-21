@@ -4,7 +4,7 @@ LokVeda is a web-based **E-Gram Panchayat system** designed to digitize essentia
 
 This project currently represents a **preview / base release (v1.0.0)**, focusing on secure access, role-based dashboards, and system flow rather than full service execution.
 
-🔗 **Live Demo**: [https://dipsana.github.io/lokveda-egram-panchayat/](https://dipsana.github.io/lokveda-egram-panchayat/)
+🔗 **Live Demo**: [https://dipsana.github.io/lokveda/](https://dipsana.github.io/lokveda/)
 
 ---
 
@@ -253,3 +253,4 @@ This project is licensed under the **MIT License**.
 
 > **Note:**
 > This project intentionally prioritizes **system design, security flow, and real-world logic** over feature completeness for this phase.
+
