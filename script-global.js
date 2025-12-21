@@ -1,3 +1,5 @@
+/* SCRIPT GLOBAL MODULE: Sets global cross UI-UX like dark-mode button, favicon, footer */
+
 import { head, body } from './dom.js';
 
 // Set favicon
@@ -10,7 +12,7 @@ import { head, body } from './dom.js';
         head.appendChild(link);
     }
     link.href = src;
-})('/favicon.png');
+})('../favicon.png');
 
 // Append global dark mode btn to nav bar
 {
@@ -52,7 +54,7 @@ import { head, body } from './dom.js';
     // Btn: id & src
     ul.id = 'nav-tools';
     btn.id = 'dark-mode';
-    img.src = '/assets/icons/dm-icon.png';
+    img.src = '../assets/icons/dm-icon.png';
 
     // Append: btn(+img) to nav
     btn.append(img);
