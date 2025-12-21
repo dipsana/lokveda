@@ -1,0 +1,57 @@
+/* UTILITIES: Quick & critical styles used by index.html & javascript modules. */
+
+/* Icons */
+.icon,
+.icon-btn {
+    font-size: x-large;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.icon-btn {
+    padding: 0.4rem 0.4rem 0.6rem 0.4rem;
+    border-radius: 50%;
+    background-color: var(--primaryColor);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.icon-btn:hover {
+    background-color: #272727;
+    transform: scale(1.03);
+}
+
+/* Display */
+.display-none {
+    display: none !important;
+}
+
+/* Opacity */
+.opacity-none {
+    opacity: 0 !important;
+}
+
+.opacity-1 {
+    opacity: 1 !important;
+}
+
+/* Transition */
+.transition-opacity {
+    transition: opacity 0.2s ease;
+}
+
+/* -------- Transform -------- */
+
+/* Rotate */
+.rotate-y-180 {
+    transform: rotateY(180deg);
+}
+
+/* **********************TABLET PORTRAIT/MOBILE SCREENS************************* */
+
+@media (max-width: 768px) {
+
+    .icon,
+    .icon-btn {
+        font-size: x-large;
+    }
+}
