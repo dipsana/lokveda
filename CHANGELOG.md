@@ -1,11 +1,37 @@
 # 🕒 Changelog
 
 All notable changes to this project are documented in this file.  
-This project follows **Semantic Versioning (SemVer)**.
+**This project adheres to [Semantic Versioning (SemVer)](https://semver.org/) standards.**
 
 ---
 
-## [1.0.0] – 2025-01-19
+## [1.0.1] – 2025-12-21
+
+### 🐛 Patch / Bug Fix
+
+This release addresses a **critical module and asset loading issue** caused by incorrect JS, CSS, and image/icon paths, which prevented modules from loading correctly on local servers and GitHub Pages.
+
+### ✅ Fixed
+
+* Normalized **all JS imports** to root-relative `/lokveda/...` paths
+* Corrected **CSS imports**, including `/lokveda/auth/auth.css`
+* Fixed **icons, images, and asset paths** across all modules
+* Ensured **all scripts and modules** load correctly without MIME type or 404 errors
+* Verified stability of project execution across all environments
+
+### 🚧 Known Limitations
+
+* No new features introduced; purely a **patch for stability**
+* All workflows and UI remain identical to v1.0.0
+
+---
+
+> Note:
+> This patch ensures the project is fully functional in all environments, fixing **critical pathing issues** for scripts, styles, and assets.
+
+---
+
+## [1.0.0] – 2025-12-21
 
 ### 🎉 Base / Preview Release
 
