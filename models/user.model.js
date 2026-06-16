@@ -294,6 +294,7 @@ userSchema.statics.verifyUserThenSendOTP = async function (aadhaar, role, userLa
             })
         });
         if (!response.ok) {
+            const data = await response.json();
             console.error('Brevo API error:', data);
             throw new Error(data?.message || 'OTP email failed via Brevo');
         }
