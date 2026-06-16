@@ -47,11 +47,11 @@ export const renderProfileForAdmin = async (req, res) => {
         if (!_user) throw new Error('User not found 😕');
 
         // Verify service
-        const _services = _user.services;
+        const _services = _user.services; let ROLE = 'admin';
         if (!_services.reviewed.includes(serviceId) && !_services.rejected.includes(serviceId)) {
-            if (_services.approved.includes(serviceId)) throw new Error('That application has already been approved 🤗');
             if (_services.pending.includes(serviceId)) throw new Error("That application hasn't been reviewed yet 🤗");
-            throw new Error('Service application not found 🙂');
+            if (_services.approved.includes(serviceId)) ROLE = null;
+            else throw new Error('Service application not found 🙂');
         }
 
         // Attach service id for frontend rendering
@@ -60,7 +60,7 @@ export const renderProfileForAdmin = async (req, res) => {
         // If validated render profile, else error
         res.render('profile', {
             _page: 'profile', _user,
-            _form: { id: serviceId, ROLE: 'admin' }
+            _form: { id: serviceId, ROLE }
         });
     } catch (err) {
         console.error(err);
