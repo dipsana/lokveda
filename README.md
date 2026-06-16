@@ -206,8 +206,8 @@ Applications already pending, reviewed, or approved are hidden from the service 
 
 ## 📁 Project Structure — LokVeda v2.0.0
 
-[lokveda/](/)
-│
+[lokveda/](/)  
+│  
 ├── 📁 [controllers/](./controllers/)  
 │   ├── [auth.controller.js](./controllers/auth.controller.js)  
 │   ├── [dashboard.controller.js](./controllers/dashboard.controller.js)  
