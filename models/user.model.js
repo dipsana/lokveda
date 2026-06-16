@@ -171,7 +171,6 @@ userSchema.statics.verifyUserThenSendOTP = async function (aadhaar, role, userLa
     const _user = await this.findOne({ aadhaar }).populate('areaRef');
     if (!_user) throw new Error('User not found 😕');
     if (!_user.approved) throw new Error("You're not approved yet. Kindly contact your Panchayat Office 😊");
-    console.log(`User ${_user.profile.name} is trying to login.`);
 
     // Block suspicious users
     if (_user.security.otp.createdAt > Date.now() - 30_000)
@@ -217,8 +216,6 @@ userSchema.statics.verifyUserThenSendOTP = async function (aadhaar, role, userLa
     const isValidLocation = await verifyUserProximity(_user, userLat, userLon);
     if (isValidLocation !== true) throw new Error(isValidLocation);
 
-    console.log(`User ${_user.profile.name} passed location verification.`);
-
     // Generate hashed OTP
     const otp = crypto.randomInt(0, 1000000).toString().padStart(6, '0'),
         salt = await bcrypt.genSalt(),
@@ -227,19 +224,14 @@ userSchema.statics.verifyUserThenSendOTP = async function (aadhaar, role, userLa
     // Send OTP to user's email
     try {
         const transporter = nodemailer.createTransport({
-            host: 'smtp.gmail.com',
+            host: 'smtp-relay.brevo.com',
             port: 587,
             secure: false,
-            family: 4,
             auth: {
                 user: process.env.EMAIL_USER,
                 pass: process.env.EMAIL_PASS
             }
         });
-
-        await transporter.verify();
-        console.log('SMTP Connected');
-
         await transporter.sendMail({
             from: process.env.EMAIL_USER,
             to: _user.profile.email,
