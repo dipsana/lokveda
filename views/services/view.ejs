@@ -36,7 +36,7 @@
     // Auto-fill form & disable the fields
     if (Object.keys(formData).length) {
         form.querySelectorAll('textarea, select, input').forEach(field => {
-            if (field.name in formData) {
+            if (field.name in formData && field.type !== 'file') {
                 field.value = field.type === 'date' ? new Date(formData[field.name]).toISOString().split('T')[0] : formData[field.name];
             }
             field.tagName === 'SELECT' ? field.disabled = true : field.readOnly = true;

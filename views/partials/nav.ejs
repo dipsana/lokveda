@@ -132,6 +132,8 @@
     document.getElementById('logout').addEventListener('click', () => {
         modalBox.querySelector('p strong').textContent = 'Do you really want to logout?';
         modalBox.querySelector('.note').textContent = '⚠️ Accounts might get locked if not logged out properly several times';
+        modalConfirm.classList.remove('display-none');
+        modalCancel.classList.remove('display-none');
         modalConfirm.textContent = 'Yes, Logout';
         modalCancel.textContent = 'Cancel';
         modalConfirm.onclick = () => window.location.href = '/logout';

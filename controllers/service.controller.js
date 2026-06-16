@@ -361,7 +361,8 @@ export const reviewProfile = async (req, res) => {
 
         // Update Applicant Application Status
         if (_service.remarks.approvedApplication) {
-            _applicant.services.reviewed = [...new Set(_applicant.services.reviewed, serviceId)]; // Remove duplication
+            _applicant.services.reviewed.push(serviceId);
+            _applicant.services.reviewed = [...new Set(_applicant.services.reviewed)]; // Remove duplication
             const pendingIdx = _applicant.services.pending.indexOf(serviceId),
                 rejectedIdx = _applicant.services.rejected.indexOf(serviceId);
             if (rejectedIdx > -1) _applicant.services.rejected.splice(rejectedIdx, 1);
@@ -392,7 +393,8 @@ export const unreviewProfile = async (req, res) => {
             { _applicant, _service } = await findApplicant(userId, serviceId, ['pending', 'rejected']);
 
         // Update Applicant Application Status
-        _applicant.services.rejected = [...new Set(_applicant.services.rejected, serviceId)]; // Remove duplication
+        _applicant.services.rejected.push(serviceId);
+        _applicant.services.rejected = [...new Set(_applicant.services.rejected)]; // Remove duplication
         const pendingIdx = _applicant.services.pending.indexOf(serviceId);
         if (pendingIdx > -1) _applicant.services.pending.splice(pendingIdx, 1);
         await _applicant.save();
@@ -563,7 +565,8 @@ export const approveProfile = async (req, res) => {
 
         // Update Applicant Application Status
         if (_service.remarks.approvedApplication) {
-            _applicant.services.approved = [...new Set(_applicant.services.approved, serviceId)]; // Remove duplication
+            _applicant.services.approved.push(serviceId);
+            _applicant.services.approved = [...new Set(_applicant.services.approved)]; // Remove duplication
             const reviewIdx = _applicant.services.reviewed.indexOf(serviceId),
                 pendingIdx = _applicant.services.pending.indexOf(serviceId),
                 rejectedIdx = _applicant.services.rejected.indexOf(serviceId);
@@ -596,7 +599,8 @@ export const rejectProfile = async (req, res) => {
             { _applicant, _service } = await findApplicant(userId, serviceId, ['reviewed', 'rejected']);
 
         // Update Applicant Application Status
-        _applicant.services.rejected = [...new Set(_applicant.services.rejected, serviceId)]; // Remove duplication
+        _applicant.services.rejected.push(serviceId);
+        _applicant.services.rejected = [...new Set(_applicant.services.rejected)]; // Remove duplication
         const reviewIdx = _applicant.services.reviewed.indexOf(serviceId),
             pendingIdx = _applicant.services.pending.indexOf(serviceId);
         if (reviewIdx > -1) _applicant.services.reviewed.splice(reviewIdx, 1);
