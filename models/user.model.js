@@ -231,14 +231,68 @@ userSchema.statics.verifyUserThenSendOTP = async function (aadhaar, role, userLa
             }
         });
         await transporter.sendMail({
-            from: process.env.EMAIL_USER,
+            from: `LokVeda <${process.env.EMAIL_USER}>`,
             to: _user.profile.email,
             subject: 'LokVeda OTP Verification',
-            text: `Hello ${_user.profile.name}! Use this OTP to login: ${otp}`
+            text: `Hello ${_user.profile.name}! Your OTP is ${otp}. It is valid for 5 minutes.`,
+            html: `
+                <div style="
+                font-family: Arial, sans-serif;
+                background-color: #f4f6f8;
+                padding: 20px;
+                ">
+                <div style="
+                    max-width: 420px;
+                    margin: auto;
+                    background: #ffffff;
+                    padding: 24px;
+                    border-radius: 10px;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+                ">
+                    <h2 style="color: #333;">LokVeda OTP Verification</h2>
+
+                    <p style="font-size: 14px; color: #555;">
+                    Hello <b>${_user.profile.name}</b>,
+                    </p>
+
+                    <p style="font-size: 14px; color: #555;">
+                    Use the OTP below to complete your login:
+                    </p>
+
+                    <div style="
+                    font-size: 26px;
+                    letter-spacing: 6px;
+                    font-weight: bold;
+                    text-align: center;
+                    margin: 20px 0;
+                    padding: 12px;
+                    background: #f0f0f0;
+                    border-radius: 8px;
+                    color: #111;
+                    ">
+                    ${otp}
+                    </div>
+
+                    <p style="font-size: 13px; color: #d9534f;">
+                    ⏳ This OTP is valid for <b>5 minutes</b>.
+                    </p>
+
+                    <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;" />
+
+                    <p style="font-size: 12px; color: #888;">
+                    If you did not request this, you can safely ignore this email.
+                    </p>
+
+                    <p style="font-size: 12px; color: #aaa; margin-top: 10px;">
+                    — LokVeda Team
+                    </p>
+                </div>
+                </div>
+            `
         });
     } catch (err) { // Handle errors
         console.error(err);
-        throw new Error('OTP not sent');
+        throw new Error('OTP sending failed 😕. Please try again later or contact support.');
     }
 
     // Store OTP & related info in user document
