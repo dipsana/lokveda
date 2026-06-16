@@ -171,6 +171,7 @@ userSchema.statics.verifyUserThenSendOTP = async function (aadhaar, role, userLa
     const _user = await this.findOne({ aadhaar }).populate('areaRef');
     if (!_user) throw new Error('User not found 😕');
     if (!_user.approved) throw new Error("You're not approved yet. Kindly contact your Panchayat Office 😊");
+    console.log(`User ${_user.profile.name} is trying to login.`);
 
     // Block suspicious users
     if (_user.security.otp.createdAt > Date.now() - 30_000)
@@ -236,7 +237,7 @@ userSchema.statics.verifyUserThenSendOTP = async function (aadhaar, role, userLa
 
         await transporter.verify();
         console.log('SMTP Connected');
-        
+
         await transporter.sendMail({
             from: process.env.EMAIL_USER,
             to: _user.profile.email,
