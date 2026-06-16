@@ -217,6 +217,8 @@ userSchema.statics.verifyUserThenSendOTP = async function (aadhaar, role, userLa
     const isValidLocation = await verifyUserProximity(_user, userLat, userLon);
     if (isValidLocation !== true) throw new Error(isValidLocation);
 
+    console.log(`User ${_user.profile.name} passed location verification.`);
+
     // Generate hashed OTP
     const otp = crypto.randomInt(0, 1000000).toString().padStart(6, '0'),
         salt = await bcrypt.genSalt(),
