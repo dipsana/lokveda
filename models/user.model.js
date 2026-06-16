@@ -226,8 +226,6 @@ userSchema.statics.verifyUserThenSendOTP = async function (aadhaar, role, userLa
     console.log('EMAIL_PASS:', process.env.EMAIL_PASS ? 'FOUND' : 'MISSING');
     // Send OTP to user's email
     try {
-        import net from 'net';
-
         const socket = net.createConnection(587, 'smtp-relay.brevo.com');
 
         socket.on('connect', () => {
