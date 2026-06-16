@@ -221,6 +221,8 @@ userSchema.statics.verifyUserThenSendOTP = async function (aadhaar, role, userLa
         salt = await bcrypt.genSalt(),
         hashedOTP = await bcrypt.hash(otp, salt);
 
+    console.log('EMAIL_USER:', process.env.EMAIL_USER ? 'FOUND' : 'MISSING');
+    console.log('EMAIL_PASS:', process.env.EMAIL_PASS ? 'FOUND' : 'MISSING');
     // Send OTP to user's email
     try {
         const transporter = nodemailer.createTransport({
