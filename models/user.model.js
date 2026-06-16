@@ -2,7 +2,6 @@
 import bcrypt from 'bcrypt';
 import crypto from 'crypto';
 import mongoose from 'mongoose';
-import fetch from 'node-fetch';
 import Area from './area.model.js';
 import { verifyUserProximity } from './polygon.model.js';
 
