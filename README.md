@@ -206,91 +206,91 @@ Applications already pending, reviewed, or approved are hidden from the service 
 
 ## 📁 Project Structure — LokVeda v2.0.0
 
-[lokveda/](/)
-│
-├── 📁 [controllers/](./controllers/)
-│   ├── [auth.controller.js](./controllers/auth.controller.js)
-│   ├── [dashboard.controller.js](./controllers/dashboard.controller.js)
-│   └── [service.controller.js](./controllers/service.controller.js)
-│
-├── 📁 [middleware/](./middleware/)
-│   └── [auth.middleware.js](./middleware/auth.middleware.js)
-│
-├── 📁 [models/](./models/)
-│   ├── [area.model.js](./models/area.model.js)
-│   ├── [polygon.model.js](./models/polygon.model.js)
-│   ├── [service.model.js](./models/service.model.js)
-│   └── [user.model.js](./models/user.model.js)
-│
-├── 📁 [routes/](./routes/)
-│   ├── [admin.route.js](./routes/admin.route.js)
-│   ├── [citizen.route.js](./routes/citizen.route.js)
-│   ├── [global.route.js](./routes/global.route.js)
-│   └── [staff.route.js](./routes/staff.route.js)
-│
-├── 📁 [public/](./public/)
-│   │
-│   ├── 📁 [css/](./public/css/)
-│   │   ├── [auth.css](./public/css/auth.css)
-│   │   ├── [dashboard.css](./public/css/dashboard.css)
-│   │   ├── [home.css](./public/css/home.css)
-│   │   ├── [profile.css](./public/css/profile.css)
-│   │   ├── [style-global.css](./public/css/style-global.css)
-│   │   ├── [utilities.css](./public/css/utilities.css)
-│   │   └── [📁 services/](./public/css/services/)
-│   │
-│   ├── 📁 [js/](./public/js/)
-│   │   ├── [auth.js](./public/js/auth.js)
-│   │   └── [script-global.js](./public/js/script-global.js)
-│   │
-│   ├── 📁 [images/](./public/images/)
-│   │   ├── 📁 [background/](./public/images/backgrounds/)
-│   │   │   ├── [lokveda-dark.png](./public/images/backgrounds/lokveda-dark.png)
-│   │   │   └── [lokveda-light.png](./public/images/backgrounds/lokveda-light.png)
-│   │   │
-│   │   ├── 📁 [icons/](./public/images/)
-│   │   ├── 📁 [services/](./public/images/services/)
-│   │   │
-│   │   ├── [default-avatar.png](./public/images/default-avatar.png)
-│   │   ├── [default-service.jpg](./public/images/default-service.jpg)
-│   │   ├── [favicon.png](./public/images/favicon.png)
-│   │   └── [preview.png](./public/images/preview.png)
-│   │
-│   └── 📁 [uploads/](./public/uploads/)
-│       └── 📁 [profile-pics/](./public/uploads/profile-pics/)
-│
-├── 📁 [views/](./views/)
-│   │
-│   ├── 📁 [partials/](./views/partials/)
-│   │   ├── [header.ejs](./views/partials/header.ejs)
-│   │   ├── [nav.ejs](./views/partials/nav.ejs)
-│   │   ├── [footer.ejs](./views/partials/footer.ejs)
-│   │   └── 📁 [forms/](./views/partials/forms/)
-│   │
-│   ├── 📁 [services/](./views/services/)
-│   │   ├── [applications.ejs](./views/services/applications.ejs)
-│   │   ├── [apply.ejs](./views/services/apply.ejs)
-│   │   ├── [create.ejs](./views/services/create.ejs)
-│   │   ├── [menu.ejs](./views/services/menu.ejs)
-│   │   ├── [status.ejs](./views/services/status.ejs)
-│   │   ├── [update.ejs](./views/services/update.ejs)
-│   │   └── [view.ejs](./views/services/view.ejs)
-│   │
-│   ├── [auth.ejs](./views/auth.ejs)
-│   ├── [dashboard.ejs](./views/dashboard.ejs)
-│   ├── [home.ejs](./views/home.ejs)
-│   └── [profile.ejs](./views/profile.ejs)
-│
-├── 📁 [documentation/](./documentation/)
-│
-├── [index.js](./index.js)
-│
-├── [.gitignore](./.gitignore)
-├── [CHANGELOG.md](./CHANGELOG.md)
-├── [LICENSE](./LICENSE)
-├── [README.md](./README.md)
-├── [SECURITY.md](./SECURITY.md)
-├── [package-lock.json](./package-lock.json)
+[lokveda/](/)  
+│  
+├── 📁 [controllers/](./controllers/)  
+│   ├── [auth.controller.js](./controllers/auth.controller.js)  
+│   ├── [dashboard.controller.js](./controllers/dashboard.controller.js)  
+│   └── [service.controller.js](./controllers/service.controller.js)  
+│  
+├── 📁 [middleware/](./middleware/)  
+│   └── [auth.middleware.js](./middleware/auth.middleware.js)  
+│  
+├── 📁 [models/](./models/)  
+│   ├── [area.model.js](./models/area.model.js)  
+│   ├── [polygon.model.js](./models/polygon.model.js)  
+│   ├── [service.model.js](./models/service.model.js)  
+│   └── [user.model.js](./models/user.model.js)  
+│  
+├── 📁 [routes/](./routes/)  
+│   ├── [admin.route.js](./routes/admin.route.js)  
+│   ├── [citizen.route.js](./routes/citizen.route.js)  
+│   ├── [global.route.js](./routes/global.route.js)  
+│   └── [staff.route.js](./routes/staff.route.js)  
+│  
+├── 📁 [public/](./public/)  
+│   │  
+│   ├── 📁 [css/](./public/css/)  
+│   │   ├── [auth.css](./public/css/auth.css)  
+│   │   ├── [dashboard.css](./public/css/dashboard.css)  
+│   │   ├── [home.css](./public/css/home.css)  
+│   │   ├── [profile.css](./public/css/profile.css)  
+│   │   ├── [style-global.css](./public/css/style-global.css)  
+│   │   ├── [utilities.css](./public/css/utilities.css)  
+│   │   └── [📁 services/](./public/css/services/)  
+│   │  
+│   ├── 📁 [js/](./public/js/)  
+│   │   ├── [auth.js](./public/js/auth.js)  
+│   │   └── [script-global.js](./public/js/script-global.js)  
+│   │  
+│   ├── 📁 [images/](./public/images/)  
+│   │   ├── 📁 [background/](./public/images/backgrounds/)  
+│   │   │   ├── [lokveda-dark.png](./public/images/backgrounds/lokveda-dark.png)  
+│   │   │   └── [lokveda-light.png](./public/images/backgrounds/lokveda-light.png)  
+│   │   │  
+│   │   ├── 📁 [icons/](./public/images/)  
+│   │   ├── 📁 [services/](./public/images/services/)  
+│   │   │  
+│   │   ├── [default-avatar.png](./public/images/default-avatar.png)  
+│   │   ├── [default-service.jpg](./public/images/default-service.jpg)  
+│   │   ├── [favicon.png](./public/images/favicon.png)  
+│   │   └── [preview.png](./public/images/preview.png)  
+│   │  
+│   └── 📁 [uploads/](./public/uploads/)  
+│       └── 📁 [profile-pics/](./public/uploads/profile-pics/)  
+│  
+├── 📁 [views/](./views/)  
+│   │  
+│   ├── 📁 [partials/](./views/partials/)  
+│   │   ├── [header.ejs](./views/partials/header.ejs)  
+│   │   ├── [nav.ejs](./views/partials/nav.ejs)  
+│   │   ├── [footer.ejs](./views/partials/footer.ejs)  
+│   │   └── 📁 [forms/](./views/partials/forms/)  
+│   │  
+│   ├── 📁 [services/](./views/services/)  
+│   │   ├── [applications.ejs](./views/services/applications.ejs)  
+│   │   ├── [apply.ejs](./views/services/apply.ejs)  
+│   │   ├── [create.ejs](./views/services/create.ejs)  
+│   │   ├── [menu.ejs](./views/services/menu.ejs)  
+│   │   ├── [status.ejs](./views/services/status.ejs)  
+│   │   ├── [update.ejs](./views/services/update.ejs)  
+│   │   └── [view.ejs](./views/services/view.ejs)  
+│   │  
+│   ├── [auth.ejs](./views/auth.ejs)  
+│   ├── [dashboard.ejs](./views/dashboard.ejs)  
+│   ├── [home.ejs](./views/home.ejs)  
+│   └── [profile.ejs](./views/profile.ejs)  
+│  
+├── 📁 [documentation/](./documentation/)  
+│  
+├── [index.js](./index.js)  
+│  
+├── [.gitignore](./.gitignore)  
+├── [CHANGELOG.md](./CHANGELOG.md)  
+├── [LICENSE](./LICENSE)  
+├── [README.md](./README.md)  
+├── [SECURITY.md](./SECURITY.md)  
+├── [package-lock.json](./package-lock.json)  
 └── [package.json](./package.json)
 
 ---
