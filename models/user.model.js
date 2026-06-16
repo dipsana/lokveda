@@ -2,7 +2,7 @@
 import bcrypt from 'bcrypt';
 import crypto from 'crypto';
 import mongoose from 'mongoose';
-import nodemailer from 'nodemailer';
+import fetch from 'node-fetch';
 import Area from './area.model.js';
 import { verifyUserProximity } from './polygon.model.js';
 
@@ -221,28 +221,86 @@ userSchema.statics.verifyUserThenSendOTP = async function (aadhaar, role, userLa
         salt = await bcrypt.genSalt(),
         hashedOTP = await bcrypt.hash(otp, salt);
 
-    console.log('EMAIL_USER:', process.env.EMAIL_USER ? 'FOUND' : 'MISSING');
-    console.log('EMAIL_PASS:', process.env.EMAIL_PASS ? 'FOUND' : 'MISSING');
     // Send OTP to user's email
     try {
-        const transporter = nodemailer.createTransport({
-            host: 'smtp-relay.brevo.com',
-            port: 587,
-            secure: false,
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS
-            }
+        const response = await fetch('https://api.brevo.com/v3/smtp/email', {
+            method: 'POST',
+            headers: {
+                'api-key': process.env.BREVO_API_KEY,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                sender: {
+                    name: 'LokVeda',
+                    email: process.env.BREVO_SENDER_EMAIL
+                },
+                to: [
+                    { email: _user.profile.email }
+                ],
+                subject: 'LokVeda OTP Verification',
+                htmlContent: `
+                    <div style="
+                        font-family: Arial, sans-serif;
+                        background-color: #f4f6f8;
+                        padding: 20px;
+                    ">
+                        <div style="
+                        max-width: 420px;
+                        margin: auto;
+                        background: #ffffff;
+                        padding: 24px;
+                        border-radius: 10px;
+                        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+                        ">
+                        <h2 style="color: #333;">LokVeda OTP Verification</h2>
+
+                        <p style="font-size: 14px; color: #555;">
+                            Hello <b>${_user.profile.name}</b>,
+                        </p>
+
+                        <p style="font-size: 14px; color: #555;">
+                            Use the OTP below to complete your login:
+                        </p>
+
+                        <div style="
+                            font-size: 26px;
+                            letter-spacing: 6px;
+                            font-weight: bold;
+                            text-align: center;
+                            margin: 20px 0;
+                            padding: 12px;
+                            background: #f0f0f0;
+                            border-radius: 8px;
+                            color: #111;
+                        ">
+                            ${otp}
+                        </div>
+
+                        <p style="font-size: 13px; color: #d9534f;">
+                            ⏳ This OTP is valid for <b>5 minutes</b>.
+                        </p>
+
+                        <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;" />
+
+                        <p style="font-size: 12px; color: #888;">
+                            If you did not request this, you can safely ignore this email.
+                        </p>
+
+                        <p style="font-size: 12px; color: #aaa; margin-top: 10px;">
+                            — LokVeda Team
+                        </p>
+                        </div>
+                    </div>
+                    `
+            })
         });
-        await transporter.sendMail({
-            from: process.env.EMAIL_USER,
-            to: _user.profile.email,
-            subject: 'LokVeda OTP Verification',
-            text: `Hello ${_user.profile.name}! Use this OTP to login: ${otp}`
-        });
+        if (!response.ok) {
+            console.error('Brevo API error:', data);
+            throw new Error(data?.message || 'OTP email failed via Brevo');
+        }
     } catch (err) { // Handle errors
-        console.error(err);
-        throw new Error('OTP not sent');
+        console.error('sendOTP failed:', err.message);
+        throw new Error('Unable to send OTP email. Please contact support or try again later 😕');
     }
 
     // Store OTP & related info in user document
