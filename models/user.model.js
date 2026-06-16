@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 import nodemailer from 'nodemailer';
 import Area from './area.model.js';
 import { verifyUserProximity } from './polygon.model.js';
-import net from 'net';
+import * as net from 'net';
 
 // Declare: User Schema
 const userSchema = new mongoose.Schema({
@@ -243,7 +243,7 @@ userSchema.statics.verifyUserThenSendOTP = async function (aadhaar, role, userLa
             console.log('TCP TIMEOUT');
             socket.destroy();
         });
-        
+
         const transporter = nodemailer.createTransport({
             host: 'smtp-relay.brevo.com',
             port: 587,
