@@ -311,9 +311,12 @@ export const reviewApplication = async (req, res) => {
             _service.reviewedBy = _user.id;
             _service.reviewedAt = Date.now();
             _service.status = 'reviewed';
+            _service.remarks.approvedApplication = _service.remarks.approvedProfile = false;
+            await _service.save();
+        } else {
+            _service.remarks.approvedApplication = true;
+            await _service.save();
         }
-        _service.remarks.approvedApplication = true;
-        await _service.save();
 
         // Respond:
         res.status(200).json({ message: 'Reviewed application', _service });
@@ -338,7 +341,7 @@ export const unreviewApplication = async (req, res) => {
         await _applicant.save();
 
         // Update Service Application Status
-        _service.remarks.approvedApplication = false;
+        _service.remarks.approvedApplication = _service.remarks.approvedProfile =  false;
         _service.rejectedBy = _user.id;
         _service.rejectedAt = Date.now();
         _service.status = 'rejected';
@@ -373,9 +376,12 @@ export const reviewProfile = async (req, res) => {
             _service.reviewedBy = _user.id;
             _service.reviewedAt = Date.now();
             _service.status = 'reviewed';
+            _service.remarks.approvedApplication = _service.remarks.approvedProfile = false;
+            await _service.save();
+        } else {
+            _service.remarks.approvedProfile = true;
+            await _service.save();
         }
-        _service.remarks.approvedProfile = true;
-        await _service.save();
 
         // Respond:
         res.status(200).json({ message: 'Reviewed applicant profile', _service });
@@ -400,7 +406,7 @@ export const unreviewProfile = async (req, res) => {
         await _applicant.save();
 
         // Update Service Application Status
-        _service.remarks.approvedProfile = false;
+        _service.remarks.approvedApplication = _service.remarks.approvedProfile =  false;
         _service.rejectedBy = _user.id;
         _service.rejectedAt = Date.now();
         _service.status = 'rejected';
