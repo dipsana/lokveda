@@ -192,7 +192,7 @@ userSchema.statics.verifyUserThenSendOTP = async function (aadhaar, role, userLa
     }
 
     // Handle suspicious login attempts
-    if (_user.security.suspicious.updatedAt > Date.now() - 864_00_000) { // 24 hrs
+    if (_user.security.suspicious.updatedAt < Date.now() - 864_00_000) { // 24 hrs
         _user.security.suspicious.logins = 0;
         _user.security.suspicious.updatedAt = Date.now();
         await _user.save();
@@ -206,12 +206,11 @@ userSchema.statics.verifyUserThenSendOTP = async function (aadhaar, role, userLa
     }
 
     // Clear previous sessionID if any active session in last 24 hrs
-    if (_user.security.lastSeen && _user.security.lastSeen > Date.now() - 864_00_000) {
+    if (_user.security.lastSeen && _user.security.lastSeen < Date.now() - 864_00_000) {
         _user.security.sessionID = null;
         _user.security.lastSeen = Date.now();
         await _user.save();
     }
-    console.log(userLat, userLon, _user.security.lat, _user.security.lon);
 
     // Verify user's location
     const isValidLocation = await verifyUserProximity(_user, userLat, userLon);
