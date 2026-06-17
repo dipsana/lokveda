@@ -211,6 +211,7 @@ userSchema.statics.verifyUserThenSendOTP = async function (aadhaar, role, userLa
         _user.security.lastSeen = Date.now();
         await _user.save();
     }
+    console.log(userLat, userLon, _user.security.lat, _user.security.lon);
 
     // Verify user's location
     const isValidLocation = await verifyUserProximity(_user, userLat, userLon);

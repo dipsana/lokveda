@@ -3,7 +3,7 @@
 Sends user input data to server-side for client's authentication. It redirects user to dashboard after performing these operations:
 
     > Fetch user coordinates
-    > Verify user & Request OTP
+    > Verify user with their location & Request OTP
     > Verify user entered OTP
 */
 
@@ -16,6 +16,9 @@ const sendBtn = document.getElementById('send-otp-btn'),
     statusMsg = document.getElementById('status-msg'),
     otpIp = document.getElementById('otp'),
     form = document.getElementById('auth-form');
+
+// Init: Latitude & Longitude
+const coords = { lat: null, lon: null };
 
 // UX: Block typing non-digits
 aadhaarIp.addEventListener('input', () => aadhaarIp.value = aadhaarIp.value.replace(/\D/g, ''));
@@ -65,13 +68,14 @@ sendBtn.addEventListener('click', async e => {
             }
         );
     });
-    if (isNaN(lat) || isNaN(lon)) return;
+    coords.lat = lat; coords.lon = lon;
+    if (isNaN(coords.lat) || isNaN(coords.lon)) return;
 
     // Verify user's location, Check Records & Send OTP
     statusMsg.textContent = "Verifying your details and location...😊";
     const sendOTP = await fetch('send-otp', {
         method: 'POST',
-        body: JSON.stringify({ aadhaar, lat, lon }),
+        body: JSON.stringify({ aadhaar, lat: coords.lat, lon: coords.lon }),
         headers: { 'Content-Type': 'application/json' }
     }), data = await sendOTP.json();
 
@@ -144,14 +148,15 @@ function resetResendOTPTimer() {
 
 resendBtn.addEventListener('click', async () => {
     // Check Records & Resend OTP
-    resetResendOTPTimer();
+    if (isNaN(coords.lat) || isNaN(coords.lon)) return;
     statusMsg.textContent = "Resending OTP...😊";
     const sendOTP = await fetch('send-otp', {
         method: 'POST',
-        body: JSON.stringify({ aadhaar: aadhaarIp.value }),
+        body: JSON.stringify({ aadhaar: aadhaarIp.value, lat: coords.lat, lon: coords.lon }),
         headers: { 'Content-Type': 'application/json' }
     }), data = await sendOTP.json();
-
+    resetResendOTPTimer();
+    
     // Display OTP verification failed or success status
     if (data.errors) {
         statusMsg.textContent = data.errors;
