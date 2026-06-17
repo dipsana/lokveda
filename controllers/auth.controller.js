@@ -78,7 +78,7 @@ export const verifyOTP = async (req, res) => {
                         const isValidSession = await bcrypt.compare(decoded.sessionID, _user.security.sessionID);
                         if (!isValidSession) {
                             _user.security.sessionID = null;
-                            _user.security.suspicious.logins += 1;
+                            _user.security.suspicious.logins++;
                             _user.security.suspicious.updatedAt = Date.now();
                             await _user.save();
                             return reject(new Error('Failed to validate session! Try again...😕'));

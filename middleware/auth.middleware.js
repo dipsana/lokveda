@@ -8,7 +8,7 @@ import { logoutUser } from '../controllers/auth.controller.js';
 async function verifyUserFromDB(_user, decoded) {
     if (_user && _user.approved && decoded.role === _user.role) {
         const hashedID = _user.security.sessionID;
-        return hashedID ? (await bcrypt.compare(decoded.sessionID, _user.security.sessionID)) : false;
+        return hashedID ? await bcrypt.compare(decoded.sessionID, _user.security.sessionID) : false;
     } else false;
 }
 
